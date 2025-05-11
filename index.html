@@ -1,590 +1,434 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marisqueira Belinha - Espaço de Eventos em Luanda</title>
+<title>Marisqueira Belinha - Espaço para Eventos</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#FFFFFF',secondary:'#6200EA'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css" rel="stylesheet">
 <link rel="icon" href="imagens/MB.png" type="image/png">
-<script src="https://cdn.tailwindcss.com/3.4.16"></script>
-<script>tailwind.config={theme:{extend:{colors:{primary:'#FFFFFF',secondary:'#1E1E1E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
 <style>
 :where([class^="ri-"])::before { content: "\f3c2"; }
 body {
-font-family: 'Inter', sans-serif;
+font-family: 'Montserrat', sans-serif;
 background-color: #121212;
-color: #E0E0E0;
+color: #f5f5f5;
+}
+@media (min-width: 768px) {
+.hero-section {
+height: 400px !important;
+}
+}
+@media (min-width: 1024px) {
+.hero-section {
+height: 500px !important;
+}
+}
+.container {
+width: 100%;
+margin-right: auto;
+margin-left: auto;
+}
+@media (min-width: 640px) {
+.container {
+max-width: 640px;
+}
+}
+@media (min-width: 768px) {
+.container {
+max-width: 768px;
+}
+}
+@media (min-width: 1024px) {
+.container {
+max-width: 1024px;
+}
+}
+@media (min-width: 1280px) {
+.container {
+max-width: 1280px;
+}
 }
 .hero-section {
-background-image: url('https://static.readdy.ai/image/0143fa7840fca1e5d0140b3a10488f44/8827d9a66fd29189b33ec6d793a54293.jpeg');
+background-image: url('imagens/1.jpg');
 background-size: cover;
 background-position: center;
 }
-.hero-overlay {
-background: rgba(0, 0, 0, 0.6);
-}
-.price-card {
-background-color: #1E1E1E;
-transition: all 0.3s ease;
-}
-.price-card:hover {
-transform: translateY(-5px);
-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
 .service-card {
-background-color: #1E1E1E;
 transition: all 0.3s ease;
 }
 .service-card:hover {
 transform: translateY(-5px);
-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+box-shadow: 0 10px 20px rgba(98, 0, 234, 0.2);
 }
-.nav-link {
+.animated-button {
 position: relative;
-}
-.nav-link::after {
-content: '';
-position: absolute;
-width: 0;
-height: 2px;
-bottom: -2px;
-left: 0;
-background-color: #D4AF37;
-transition: width 0.3s ease;
-}
-.nav-link:hover::after {
-width: 100%;
-}
-.btn-primary {
-background-color: #D4AF37;
+overflow: hidden;
 transition: all 0.3s ease;
 }
-.btn-primary:hover {
-background-color: #B8982E;
-transform: translateY(-2px);
+.animated-button:after {
+content: "";
+position: absolute;
+top: 50%;
+left: 50%;
+width: 0;
+height: 0;
+background: rgba(255, 255, 255, 0.2);
+border-radius: 50%;
+transform: translate(-50%, -50%);
+transition: width 0.6s ease, height 0.6s ease;
 }
-input, textarea {
-background-color: #2A2A2A;
-border: 1px solid #3A3A3A;
-color: #E0E0E0;
+.animated-button:hover:after {
+width: 300px;
+height: 300px;
+}
+.animated-button:hover {
+box-shadow: 0 5px 15px rgba(98, 0, 234, 0.4);
+}
+.social-icon {
+transition: all 0.3s ease;
+}
+.social-icon:hover {
+transform: scale(1.2);
+}
+.menu-item {
+position: relative;
+overflow: hidden;
+}
+.menu-item:after {
+content: "";
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background-color: #6200EA;
+transition: width 0.3s ease;
+}
+.menu-item:hover:after {
+width: 100%;
+}
+.fade-in {
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.card-hover {
+transition: all 0.3s ease;
+}
+.card-hover:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(98, 0, 234, 0.3);
 }
 input:focus, textarea:focus {
-border-color: #D4AF37;
 outline: none;
+border-color: #6200EA;
+box-shadow: 0 0 0 2px rgba(98, 0, 234, 0.2);
 }
 </style>
 </head>
-<body class="relative">
-<!-- Navbar -->
-<nav class="fixed top-0 w-full bg-[#121212] shadow-md z-50">
-<div class="max-w-[375px] mx-auto px-4 py-3 flex justify-between items-center">
-<a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="text-xl font-['Pacifico'] text-[#D4AF37]">Marisqueira Belinha</a>
-<div class="w-8 h-8 flex items-center justify-center cursor-pointer" id="menuToggle">
-<i class="ri-menu-line ri-lg text-white"></i>
+<body class="max-w-[1440px] min-h-[762px] mx-auto relative">
+<!-- Nav Bar -->
+<nav class="fixed w-full top-0 z-50 bg-gray-900 bg-opacity-95 backdrop-blur-sm border-b border-gray-800">
+<div class="flex justify-between items-center px-4 py-3">
+<div class="font-['Pacifico'] text-2xl text-white">Marisqueira Belinha</div>
+<button id="menuToggle" class="w-8 h-8 flex items-center justify-center text-white">
+<i class="ri-menu-line ri-lg"></i>
+</button>
 </div>
-</div>
-<!-- Mobile Menu -->
-<div id="mobileMenu" class="hidden max-w-[375px] mx-auto bg-[#1A1A1A] px-4 py-2 shadow-lg">
-<ul class="space-y-3 py-2">
-<li><a href="#sobre" class="block py-2 nav-link text-white hover:text-[#D4AF37]">Sobre Nós</a></li>
-<li><a href="#servicos" class="block py-2 nav-link text-white hover:text-[#D4AF37]">Nossos Serviços</a></li>
-<li><a href="#precario" class="block py-2 nav-link text-white hover:text-[#D4AF37]">Preçário</a></li>
-<li><a href="#extras" class="block py-2 nav-link text-white hover:text-[#D4AF37]">Serviços Adicionais</a></li>
-<li><a href="#contato" class="block py-2 nav-link text-white hover:text-[#D4AF37]">Contacto</a></li>
-<li class="pt-2">
-<a href="https://wa.me/244935079096" class="block w-full py-2 px-4 bg-[#D4AF37] text-black font-medium rounded-button text-center hover:bg-[#B8982E] transition-all !rounded-button">Reserve Já</a>
-</li>
-</ul>
+<div id="mobileMenu" class="hidden px-4 py-2 bg-gray-900 border-t border-gray-800">
+<a href="#inicio" class="menu-item block py-2 text-white hover:text-secondary">Início</a>
+<a href="#sobre" class="menu-item block py-2 text-white hover:text-secondary">Sobre</a>
+<a href="#servicos" class="menu-item block py-2 text-white hover:text-secondary">Serviços</a>
+<a href="#extras" class="menu-item block py-2 text-white hover:text-secondary">Extras</a>
+<a href="#localizacao" class="menu-item block py-2 text-white hover:text-secondary">Localização</a>
+<a href="#contato" class="menu-item block py-2 text-white hover:text-secondary">Contato</a>
 </div>
 </nav>
+<div class="pt-16 container mx-auto px-4 md:px-6 lg:px-8">
 <!-- Hero Section -->
-<section class="hero-section pt-16 h-[500px] relative">
-<div class="hero-overlay absolute inset-0"></div>
-<div class="max-w-[375px] mx-auto px-4 py-16 relative z-10 h-full flex flex-col justify-center items-center text-center">
-<h1 class="text-2xl font-bold text-white mb-4">O espaço ideal para tornar o seu evento inesquecível</h1>
-<p class="text-lg mb-8 text-gray-200">Casamentos • Festas • Conferências • Workshops</p>
-<a href="https://wa.me/244935079096" class="py-3 px-6 bg-[#D4AF37] text-black font-medium rounded-button hover:bg-[#B8982E] transition-all !rounded-button">Reservar Agora</a>
+<section id="inicio" class="hero-section h-[300px] relative rounded-lg mx-4 mt-4 overflow-hidden">
+<div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center p-6 text-center">
+<h1 class="text-4xl font-extrabold mb-4 text-white">Marisqueira Belinha</h1>
+<p class="text-xl mb-6 text-white">Eventos únicos e inesquecíveis</p>
+<a href="#servicos" class="animated-button bg-secondary text-white px-6 py-3 rounded-button font-semibold cursor-pointer">
+Reserve Seu Evento
+</a>
 </div>
 </section>
 <!-- Sobre Section -->
-<section id="sobre" class="py-12 bg-[#181818]">
-<div class="max-w-[375px] mx-auto px-4">
-<h2 class="text-2xl font-bold mb-8 text-center text-white">Sobre Nós</h2>
-<div>
-<p class="text-gray-300 mb-4">
-A Marisqueira Belinha é um espaço moderno e versátil localizado no Bairro Prenda, em Luanda, com capacidade para mais de 300 pessoas.
+<section id="sobre" class="px-4 py-10">
+<div class="text-center fade-in">
+<h2 class="text-3xl font-bold mb-6 text-white">Sobre Nós</h2>
+<p class="text-lg leading-relaxed mb-6 text-gray-300">
+A Marisqueira Belinha um espaço de arrendamento, para eventos, únicos e inesquecíveis
 </p>
-<p class="text-gray-300 mb-4">
-Nosso espaço é ideal para casamentos, festas privadas, workshops, conferências e outros eventos que merecem um ambiente elegante e profissional.
-</p>
-<p class="text-gray-300">
-Contamos com infraestrutura completa, equipe especializada e localização privilegiada para garantir que seu evento seja verdadeiramente inesquecível.
-</p>
-</div>
 </div>
 </section>
 <!-- Serviços Section -->
-<section id="servicos" class="py-12 bg-[#121212]">
-<div class="max-w-[375px] mx-auto px-4">
-<h2 class="text-2xl font-bold mb-8 text-center text-white">Nossos Serviços</h2>
-<div class="grid grid-cols-2 gap-4">
-<div class="service-card p-4 rounded-lg text-center">
-<div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-<img src="https://readdy.ai/api/search-image?query=icon%2C%203D%20cartoon%2C%20wedding%20rings%2C%20the%20icon%20should%20take%20up%2070%25%20of%20the%20frame%2C%20vibrant%20colors%20with%20soft%20gradients%2C%20minimalist%20design%2C%20smooth%20rounded%20shapes%2C%20subtle%20shading%2C%20no%20outlines%2C%20centered%20composition%2C%20isolated%20on%20dark%20background%2C%20playful%20and%20friendly%20aesthetic%2C%20high%20detail%20quality%2C%20clean%20and%20modern%20look%2C%20single%20object%20focus&width=64&height=64&seq=789&orientation=squarish" alt="Casamentos" class="w-full h-full object-contain">
+<section id="servicos" class="px-4 py-10 bg-gray-900 rounded-lg mx-auto max-w-7xl">
+<h2 class="text-3xl font-bold mb-8 text-center text-white">Nossos Serviços</h2>
+<div class="space-y-6">
+<div class="service-card bg-gray-800 rounded-lg p-5 shadow-lg">
+<h3 class="text-xl font-bold mb-4 text-white">ARRENDAMENTO DO ESPAÇO DE EVENTO</h3>
+<div class="grid grid-cols-1 gap-4">
+<div class="bg-gray-700 rounded-lg p-4">
+<h4 class="text-lg font-semibold mb-2 text-white">DOMINGO Á QUARTA-FEIRA</h4>
+<p class="text-2xl font-bold text-secondary mb-3">50.000 Kz</p>
+<button class="animated-button w-full bg-secondary text-white py-2 rounded-button font-semibold cursor-pointer" onclick="enviarMensagem('Interesse em arrendamento - Domingo á Quarta-feira')">
+Solicitar
+</button>
 </div>
-<h3 class="font-medium text-white">Casamentos</h3>
+<div class="bg-gray-700 rounded-lg p-4">
+<h4 class="text-lg font-semibold mb-2 text-white">QUINTA-FEIRA</h4>
+<p class="text-2xl font-bold text-secondary mb-3">100.000 Kz</p>
+<button class="animated-button w-full bg-secondary text-white py-2 rounded-button font-semibold cursor-pointer" onclick="enviarMensagem('Interesse em arrendamento - Quinta-feira')">
+Solicitar
+</button>
 </div>
-<div class="service-card p-4 rounded-lg text-center">
-<div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-<img src="https://readdy.ai/api/search-image?query=icon%2C%203D%20cartoon%2C%20party%20balloons%20and%20confetti%2C%20the%20icon%20should%20take%20up%2070%25%20of%20the%20frame%2C%20vibrant%20colors%20with%20soft%20gradients%2C%20minimalist%20design%2C%20smooth%20rounded%20shapes%2C%20subtle%20shading%2C%20no%20outlines%2C%20centered%20composition%2C%20isolated%20on%20dark%20background%2C%20playful%20and%20friendly%20aesthetic%2C%20high%20detail%20quality%2C%20clean%20and%20modern%20look%2C%20single%20object%20focus&width=64&height=64&seq=790&orientation=squarish" alt="Festas Privadas" class="w-full h-full object-contain">
+<div class="bg-gray-700 rounded-lg p-4">
+<h4 class="text-lg font-semibold mb-2 text-white">SEXTA, SÁBADO E FERIADOS</h4>
+<p class="text-2xl font-bold text-secondary mb-3">200.000 Kz</p>
+<button class="animated-button w-full bg-secondary text-white py-2 rounded-button font-semibold cursor-pointer" onclick="enviarMensagem('Interesse em arrendamento - Sexta, Sábado e Feriados')">
+Solicitar
+</button>
 </div>
-<h3 class="font-medium text-white">Festas Privadas</h3>
 </div>
-<div class="service-card p-4 rounded-lg text-center">
-<div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-<img src="https://readdy.ai/api/search-image?query=icon%2C%203D%20cartoon%2C%20microphone%20and%20podium%2C%20the%20icon%20should%20take%20up%2070%25%20of%20the%20frame%2C%20vibrant%20colors%20with%20soft%20gradients%2C%20minimalist%20design%2C%20smooth%20rounded%20shapes%2C%20subtle%20shading%2C%20no%20outlines%2C%20centered%20composition%2C%20isolated%20on%20dark%20background%2C%20playful%20and%20friendly%20aesthetic%2C%20high%20detail%20quality%2C%20clean%20and%20modern%20look%2C%20single%20object%20focus&width=64&height=64&seq=791&orientation=squarish" alt="Conferências" class="w-full h-full object-contain">
 </div>
-<h3 class="font-medium text-white">Conferências</h3>
+<div class="service-card bg-gray-800 rounded-lg p-5 shadow-lg">
+<h3 class="text-xl font-bold mb-4 text-white">COZINHA EQUIPADA</h3>
+<p class="text-gray-300 mb-2">IDEAL PARA CATERING E BUFFETS</p>
+<div class="flex justify-between items-center mb-4">
+<span class="text-gray-300">Preço</span>
+<span class="text-secondary font-bold">50.000 Kz</span>
 </div>
-<div class="service-card p-4 rounded-lg text-center">
-<div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-<img src="https://readdy.ai/api/search-image?query=icon%2C%203D%20cartoon%2C%20workshop%20with%20people%20learning%2C%20the%20icon%20should%20take%20up%2070%25%20of%20the%20frame%2C%20vibrant%20colors%20with%20soft%20gradients%2C%20minimalist%20design%2C%20smooth%20rounded%20shapes%2C%20subtle%20shading%2C%20no%20outlines%2C%20centered%20composition%2C%20isolated%20on%20dark%20background%2C%20playful%20and%20friendly%20aesthetic%2C%20high%20detail%20quality%2C%20clean%20and%20modern%20look%2C%20single%20object%20focus&width=64&height=64&seq=792&orientation=squarish" alt="Workshops" class="w-full h-full object-contain">
+<button class="animated-button w-full bg-secondary text-white py-2 rounded-button font-semibold cursor-pointer" onclick="enviarMensagem('Interesse em cozinha equipada')">
+Solicitar
+</button>
 </div>
-<h3 class="font-medium text-white">Workshops</h3>
+<div class="service-card bg-gray-800 rounded-lg p-5 shadow-lg">
+<h3 class="text-xl font-bold mb-4 text-white">SALA EXTRA</h3>
+<p class="text-gray-300 mb-2">ESPAÇO ADICIONAL PARA SUPORTE OU ÁREA VIP</p>
+<div class="flex justify-between items-center mb-4">
+<span class="text-gray-300">Preço</span>
+<span class="text-secondary font-bold">50.000 Kz</span>
 </div>
-<div class="service-card p-4 rounded-lg text-center">
-<div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-<img src="https://readdy.ai/api/search-image?query=icon%2C%203D%20cartoon%2C%20business%20meeting%20with%20briefcase%2C%20the%20icon%20should%20take%20up%2070%25%20of%20the%20frame%2C%20vibrant%20colors%20with%20soft%20gradients%2C%20minimalist%20design%2C%20smooth%20rounded%20shapes%2C%20subtle%20shading%2C%20no%20outlines%2C%20centered%20composition%2C%20isolated%20on%20dark%20background%2C%20playful%20and%20friendly%20aesthetic%2C%20high%20detail%20quality%2C%20clean%20and%20modern%20look%2C%20single%20object%20focus&width=64&height=64&seq=793&orientation=squarish" alt="Corporativos" class="w-full h-full object-contain">
+<button class="animated-button w-full bg-secondary text-white py-2 rounded-button font-semibold cursor-pointer" onclick="enviarMensagem('Interesse em sala extra')">
+Solicitar
+</button>
 </div>
-<h3 class="font-medium text-white">Corporativos</h3>
+<div class="service-card bg-gray-800 rounded-lg p-5 shadow-lg">
+<h3 class="text-xl font-bold mb-4 text-white">SALA DE WORKSHOP</h3>
+<p class="text-gray-300 mb-4">Espaço ideal para treinamentos e apresentações</p>
+<div class="flex justify-between items-center mb-4">
+<span class="text-gray-300">Preço</span>
+<span class="text-secondary font-bold">Sob consulta</span>
 </div>
-<div class="service-card p-4 rounded-lg text-center">
-<div class="w-16 h-16 mx-auto mb-3 flex items-center justify-center">
-<img src="https://readdy.ai/api/search-image?query=icon%2C%203D%20cartoon%2C%20religious%20symbol%20like%20a%20cross%20or%20praying%20hands%2C%20the%20icon%20should%20take%20up%2070%25%20of%20the%20frame%2C%20vibrant%20colors%20with%20soft%20gradients%2C%20minimalist%20design%2C%20smooth%20rounded%20shapes%2C%20subtle%20shading%2C%20no%20outlines%2C%20centered%20composition%2C%20isolated%20on%20dark%20background%2C%20playful%20and%20friendly%20aesthetic%2C%20high%20detail%20quality%2C%20clean%20and%20modern%20look%2C%20single%20object%20focus&width=64&height=64&seq=794&orientation=squarish" alt="Religiosos" class="w-full h-full object-contain">
-</div>
-<h3 class="font-medium text-white">Religiosos</h3>
-</div>
+<button class="animated-button w-full bg-secondary text-white py-2 rounded-button font-semibold cursor-pointer" onclick="enviarMensagem('Interesse em sala de workshop')">
+Solicitar
+</button>
 </div>
 </div>
 </section>
-<!-- Preçário Section -->
-<section id="precario" class="py-12 bg-[#181818]">
-<div class="max-w-[375px] mx-auto px-4">
-<h2 class="text-2xl font-bold mb-8 text-center text-white">Preçário</h2>
-<div class="grid grid-cols-1 gap-4 mb-8">
-<div class="price-card p-5 rounded-lg">
-<h3 class="text-lg font-medium mb-2 text-white">Dom a Qua</h3>
-<p class="text-2xl font-bold text-[#D4AF37] mb-2">50.000 Kz</p>
+<!-- Serviços Extras Section -->
+<section id="extras" class="px-4 py-10">
+<h2 class="text-3xl font-bold mb-8 text-center text-white">Serviços Extras</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+<div class="card-hover bg-gray-800 rounded-lg p-4 text-center">
+<div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+<i class="ri-palette-line ri-2x text-secondary"></i>
 </div>
-<div class="price-card p-5 rounded-lg">
-<h3 class="text-lg font-medium mb-2 text-white">Quinta</h3>
-<p class="text-2xl font-bold text-[#D4AF37] mb-2">100.000 Kz</p>
+<h3 class="text-lg font-semibold mb-2 text-white">DECORAÇÃO PERSONALIZADA</h3>
+<p class="text-sm text-gray-400 mb-3">Preço sob consulta</p>
+<button class="animated-button w-full bg-secondary text-white py-2 rounded-button text-sm font-semibold cursor-pointer" onclick="enviarMensagem('Interesse em decoração personalizada')">
+Consultar
+</button>
 </div>
-<div class="price-card p-5 rounded-lg">
-<h3 class="text-lg font-medium mb-2 text-white">Sex, Sáb, Feriado</h3>
-<p class="text-2xl font-bold text-[#D4AF37] mb-2">200.000 Kz</p>
+<div class="card-hover bg-gray-800 rounded-lg p-4 text-center">
+<div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+<i class="ri-speaker-line ri-2x text-secondary"></i>
 </div>
+<h3 class="text-lg font-semibold mb-2 text-white">SISTEMA DE SOM E ILUMINAÇÃO PRO</h3>
+<p class="text-sm text-gray-400 mb-3">Preço sob consulta</p>
+<button class="animated-button w-full bg-secondary text-white py-2 rounded-button text-sm font-semibold cursor-pointer" onclick="enviarMensagem('Interesse em sistema de som e iluminação')">
+Consultar
+</button>
 </div>
-<h3 class="text-xl font-semibold mb-4 text-white">Extras</h3>
-<div class="grid grid-cols-1 gap-4 mb-8">
-<div class="price-card p-4 rounded-lg">
-<div class="flex justify-between items-center">
-<h4 class="text-white">Cozinha</h4>
-<p class="text-[#D4AF37] font-medium">50.000 Kz</p>
+<div class="card-hover bg-gray-800 rounded-lg p-4 text-center">
+<div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+<i class="ri-team-line ri-2x text-secondary"></i>
 </div>
+<h3 class="text-lg font-semibold mb-2 text-white">EQUIPE DE APOIO</h3>
+<p class="text-sm text-gray-400 mb-3">Garçons, segurança, etc.</p>
+<button class="animated-button w-full bg-secondary text-white py-2 rounded-button text-sm font-semibold cursor-pointer" onclick="enviarMensagem('Interesse em equipe de apoio')">
+Consultar
+</button>
 </div>
-<div class="price-card p-4 rounded-lg">
-<div class="flex justify-between items-center">
-<h4 class="text-white">Sala VIP</h4>
-<p class="text-[#D4AF37] font-medium">50.000 Kz</p>
+<div class="card-hover bg-gray-800 rounded-lg p-4 text-center">
+<div class="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
+<i class="ri-calendar-event-line ri-2x text-secondary"></i>
 </div>
-</div>
-<div class="price-card p-4 rounded-lg">
-<div class="flex justify-between items-center">
-<h4 class="text-white">Workshop</h4>
-<p class="text-[#D4AF37] font-medium">sob consulta</p>
-</div>
-</div>
-</div>
-<h3 class="text-xl font-semibold mb-4 text-white">Serviços adicionais</h3>
-<div class="price-card p-4 rounded-lg mb-4">
-<p class="text-gray-300 mb-2">Sob consulta:</p>
-<ul class="list-disc pl-5 text-gray-300">
-<li>Decoração</li>
-<li>Som/iluminação PRO</li>
-<li>Equipe de apoio</li>
-<li>Pacotes contínuos</li>
-</ul>
+<h3 class="text-lg font-semibold mb-2 text-white">OFERTAS P/ EVENTOS CONTÍNUOS</h3>
+<p class="text-sm text-gray-400 mb-3">Descontos especiais</p>
+<button class="animated-button w-full bg-secondary text-white py-2 rounded-button text-sm font-semibold cursor-pointer" onclick="enviarMensagem('Interesse em ofertas para eventos contínuos')">
+Consultar
+</button>
 </div>
 </div>
 </section>
 <!-- Contato Section -->
-<section id="contato" class="py-12 bg-[#121212]">
-<div class="max-w-[375px] mx-auto px-4">
-<h2 class="text-2xl font-bold mb-8 text-center text-white">Contato</h2>
-<div class="mb-8">
-<div class="mb-6">
-<h3 class="text-lg font-medium mb-3 text-white">Informações de Contato</h3>
-<div class="flex items-start mb-3">
-<div class="w-8 h-8 flex items-center justify-center mr-3">
-<i class="ri-phone-line text-[#D4AF37]"></i>
+<section id="contato" class="px-4 py-10 bg-gray-900 rounded-lg mx-4">
+<h2 class="text-3xl font-bold mb-8 text-center text-white">Fale Conosco</h2>
+<form id="contactForm" class="space-y-4 mb-6">
+<div>
+<label for="nome" class="block text-gray-300 mb-1">Nome</label>
+<input type="text" id="nome" class="w-full bg-gray-800 text-white border border-gray-700 rounded-button p-3" required>
 </div>
 <div>
-<p class="text-gray-300">+244 935 079 096 / +244 923 698 434</p>
-</div>
-</div>
-<div class="flex items-start mb-3">
-<div class="w-8 h-8 flex items-center justify-center mr-3">
-<i class="ri-whatsapp-line text-[#D4AF37]"></i>
+<label for="email" class="block text-gray-300 mb-1">Email</label>
+<input type="email" id="email" class="w-full bg-gray-800 text-white border border-gray-700 rounded-button p-3" required>
 </div>
 <div>
-<p class="text-gray-300">935 079 096 • 923 698 434</p>
-</div>
-</div>
-<div class="flex items-start">
-<div class="w-8 h-8 flex items-center justify-center mr-3">
-<i class="ri-map-pin-line text-[#D4AF37]"></i>
+<label for="telefone" class="block text-gray-300 mb-1">Telefone</label>
+<input type="tel" id="telefone" class="w-full bg-gray-800 text-white border border-gray-700 rounded-button p-3" required>
 </div>
 <div>
-<p class="text-gray-300">Bairro Prenda, Rua dos Militares / Maianga</p>
+<label for="mensagem" class="block text-gray-300 mb-1">Mensagem</label>
+<textarea id="mensagem" rows="4" class="w-full bg-gray-800 text-white border border-gray-700 rounded-button p-3" required></textarea>
 </div>
-</div>
-</div>
-<div class="mb-6">
-<h3 class="text-lg font-medium mb-3 text-white">Nossa Localização</h3>
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3942.4792285493247!2d13.2324595!3d-8.8375283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f34505e0c5e7%3A0x7c3c01f726c8b0bd!2sBairro%20Prenda%2C%20Luanda%2C%20Angola!5e0!3m2!1sen!2sus!4v1709840444851!5m2!1sen!2sus" class="w-full h-48 rounded-lg" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
-</div>
-<div>
-<h3 class="text-lg font-medium mb-4 text-white">Envie sua mensagem</h3>
-<form id="contactForm" class="space-y-4">
-<div>
-<label for="name" class="block text-sm font-medium text-gray-300 mb-1">Nome</label>
-<input type="text" id="name" name="name" class="w-full px-3 py-2 rounded-lg" required>
-</div>
-<div>
-<label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-<input type="email" id="email" name="email" class="w-full px-3 py-2 rounded-lg" required>
-</div>
-<div>
-<label for="eventType" class="block text-sm font-medium text-gray-300 mb-1">Tipo de Evento</label>
-<select id="eventType" name="eventType" class="w-full px-3 py-2 rounded-lg bg-[#2A2A2A] text-white border border-[#3A3A3A]" required>
-<option value="">Selecione o tipo</option>
-<option value="casamento">Casamento</option>
-<option value="festa">Festa Privada</option>
-<option value="conferencia">Conferência</option>
-<option value="workshop">Workshop</option>
-<option value="corporativo">Evento Corporativo</option>
-<option value="religioso">Evento Religioso</option>
-</select>
-</div>
-<div>
-<label for="date" class="block text-sm font-medium text-gray-300 mb-1">Data do Evento</label>
-<input type="date" id="date" name="date" class="w-full px-3 py-2 rounded-lg" required>
-</div>
-<div>
-<label for="message" class="block text-sm font-medium text-gray-300 mb-1">Mensagem</label>
-<textarea id="message" name="message" rows="4" class="w-full px-3 py-2 rounded-lg" required></textarea>
-</div>
-<div>
-<button type="submit" class="w-full py-3 px-4 bg-[#D4AF37] text-black font-medium rounded-button hover:bg-[#B8982E] transition-all !rounded-button">Enviar Mensagem</button>
-</div>
+<button type="submit" class="animated-button w-full bg-secondary text-white py-3 rounded-button font-semibold cursor-pointer">
+Enviar Mensagem
+</button>
 </form>
-<div class="mt-4 text-center">
-<a href="https://wa.me/244935079096" class="inline-flex items-center text-[#D4AF37] hover:underline">
-<i class="ri-whatsapp-line mr-2"></i> Ou contacte-nos diretamente no WhatsApp
+<div class="flex flex-col space-y-3">
+<p class="flex items-center text-gray-300">
+<span class="w-8 h-8 flex items-center justify-center mr-2">
+<i class="ri-phone-line text-secondary"></i>
+</span>
+935 079 096 / 923 698 434
+</p>
+<a href="https://wa.me/244923698434" class="flex items-center text-gray-300 hover:text-secondary">
+<span class="w-8 h-8 flex items-center justify-center mr-2">
+<i class="ri-whatsapp-line text-secondary"></i>
+</span>
+WhatsApp: 923 698 434
 </a>
-</div>
-</div>
 </div>
 </section>
-<!-- Admin Login Modal -->
-<div id="adminLoginModal" class="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center hidden">
-<div class="bg-[#1E1E1E] p-6 rounded-lg w-[320px] max-w-[90%]">
-<div class="flex justify-between items-center mb-4">
-<h3 class="text-lg font-medium text-white">Área Administrativa</h3>
-<button id="closeAdminModal" class="text-gray-400 hover:text-white">
-<i class="ri-close-line ri-lg"></i>
-</button>
+<!-- Localização Section -->
+<section id="localizacao" class="px-4 py-10">
+<h2 class="text-3xl font-bold mb-8 text-center text-white">Nossa Localização</h2>
+<div class="rounded-lg overflow-hidden mb-4 h-[250px]">
+<iframe
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15766.904258263702!2d13.2292654!3d-8.8367086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f15106773e4b%3A0x1bc0f1d4a7b5c5c5!2sBairro%20Prenda%2C%20Luanda%2C%20Angola!5e0!3m2!1spt-BR!2sbr!4v1652276896754!5m2!1spt-BR!2sbr"
+width="100%"
+height="100%"
+style="border:0;"
+allowfullscreen=""
+loading="lazy"
+referrerpolicy="no-referrer-when-downgrade">
+</iframe>
 </div>
-<form id="adminLoginForm" class="space-y-4">
-<div>
-<label for="adminPassword" class="block text-sm font-medium text-gray-300 mb-1">Senha</label>
-<input type="password" id="adminPassword" class="w-full px-3 py-2 rounded-lg" required>
+<div class="text-center text-gray-300">
+<p class="mb-1">Bairro Prenda, Rua dos Militares/Maianga</p>
+<p>Luanda, Angola</p>
 </div>
-<div>
-<button type="submit" class="w-full py-2 px-4 bg-[#D4AF37] text-black font-medium rounded-button hover:bg-[#B8982E] transition-all !rounded-button">Entrar</button>
+</section>
+<!-- Social Media Section -->
+<section class="px-4 py-10 bg-gray-900 rounded-lg mx-auto max-w-7xl mb-20">
+<h2 class="text-2xl font-bold mb-6 text-center text-white">Siga-nos nas Redes Sociais</h2>
+<div class="flex justify-center space-x-6">
+<a href="https://www.instagram.com/marisqueirabelinha/" class="social-icon w-12 h-12 flex items-center justify-center bg-gray-800 rounded-full cursor-pointer">
+<i class="ri-instagram-line ri-xl text-secondary"></i>
+</a>
+<a href="https://www.facebook.com/dercioherlander.fernandespereira?locale=pt_BR" class="social-icon w-12 h-12 flex items-center justify-center bg-gray-800 rounded-full cursor-pointer">
+<i class="ri-facebook-line ri-xl text-secondary"></i>
+</a>
+<a href="https://wa.me/244923698434" class="social-icon w-12 h-12 flex items-center justify-center bg-gray-800 rounded-full cursor-pointer">
+<i class="ri-whatsapp-line ri-xl text-secondary"></i>
+</a>
+<a href="https://www.tiktok.com/@marisqueirabelinha" class="social-icon w-12 h-12 flex items-center justify-center bg-gray-800 rounded-full cursor-pointer">
+<i class="ri-tiktok-line ri-xl text-secondary"></i>
+</a>
 </div>
-<p id="loginError" class="text-red-500 text-sm hidden">Senha incorreta. Tente novamente.</p>
-</form>
-</div>
-</div>
-<!-- Admin Panel (Hidden by default) -->
-<div id="adminPanel" class="fixed inset-0 bg-black bg-opacity-90 z-50 overflow-y-auto hidden">
-<div class="max-w-[375px] mx-auto px-4 py-6">
-<div class="flex justify-between items-center mb-6">
-<h2 class="text-xl font-bold text-white">Painel Administrativo</h2>
-<button id="closeAdminPanel" class="text-gray-400 hover:text-white">
-<i class="ri-close-line ri-lg"></i>
-</button>
-</div>
-<div class="bg-[#1E1E1E] p-4 rounded-lg mb-6">
-<h3 class="text-lg font-medium mb-3 text-white">Atualizar Imagem Principal</h3>
-<div class="mb-3">
-<label class="block text-sm font-medium text-gray-300 mb-1">Imagem Atual</label>
-<div class="h-32 bg-[#2A2A2A] rounded-lg flex items-center justify-center">
-<img id="currentHeroImage" src="https://readdy.ai/api/search-image?query=elegant%20restaurant%20interior%20with%20warm%20lighting%2C%20luxurious%20ambiance%2C%20tables%20set%20for%20events%2C%20dark%20mode%20photography%2C%20professional%20venue%20space&width=375&height=300&seq=123&orientation=landscape" alt="Imagem atual" class="h-full object-contain">
-</div>
-</div>
-<div>
-<label for="newHeroImage" class="block text-sm font-medium text-gray-300 mb-1">Nova Imagem</label>
-<input type="file" id="newHeroImage" class="w-full px-3 py-2 rounded-lg bg-[#2A2A2A] text-white">
-</div>
-<button id="updateHeroImage" class="mt-3 py-2 px-4 bg-[#D4AF37] text-black font-medium rounded-button hover:bg-[#B8982E] transition-all !rounded-button">Atualizar Imagem</button>
-</div>
-<div class="bg-[#1E1E1E] p-4 rounded-lg mb-6">
-<h3 class="text-lg font-medium mb-3 text-white">Editar Nome</h3>
-<div>
-<label for="siteName" class="block text-sm font-medium text-gray-300 mb-1">Nome do Estabelecimento</label>
-<input type="text" id="siteName" value="Marisqueira Belinha" class="w-full px-3 py-2 rounded-lg bg-[#2A2A2A] text-white">
-</div>
-<button id="updateSiteName" class="mt-3 py-2 px-4 bg-[#D4AF37] text-black font-medium rounded-button hover:bg-[#B8982E] transition-all !rounded-button">Atualizar Nome</button>
-</div>
-<div class="bg-[#1E1E1E] p-4 rounded-lg mb-6">
-<h3 class="text-lg font-medium mb-3 text-white">Editar Redes Sociais</h3>
-<div class="space-y-3">
-<div>
-<label for="instagramLink" class="block text-sm font-medium text-gray-300 mb-1">Link do Instagram</label>
-<input type="text" id="instagramLink" value="https://instagram.com/marisqueirabelinha" class="w-full px-3 py-2 rounded-lg bg-[#2A2A2A] text-white">
-</div>
-<div>
-<label for="facebookLink" class="block text-sm font-medium text-gray-300 mb-1">Link do Facebook</label>
-<input type="text" id="facebookLink" value="https://facebook.com/MarisqueiraBelinha" class="w-full px-3 py-2 rounded-lg bg-[#2A2A2A] text-white">
-</div>
-<div>
-<label for="tiktokLink" class="block text-sm font-medium text-gray-300 mb-1">Link do TikTok</label>
-<input type="text" id="tiktokLink" value="https://www.tiktok.com/@marisqueirabelinha" class="w-full px-3 py-2 rounded-lg bg-[#2A2A2A] text-white">
-</div>
-<div>
-<label for="whatsappNumber" class="block text-sm font-medium text-gray-300 mb-1">Número do WhatsApp</label>
-<input type="text" id="whatsappNumber" value="244935079096" class="w-full px-3 py-2 rounded-lg bg-[#2A2A2A] text-white">
-</div>
-</div>
-<button id="updateSocialLinks" class="mt-3 py-2 px-4 bg-[#D4AF37] text-black font-medium rounded-button hover:bg-[#B8982E] transition-all !rounded-button">Atualizar Links</button>
-</div>
-<div class="bg-[#1E1E1E] p-4 rounded-lg">
-<h3 class="text-lg font-medium mb-3 text-white">Editar Preços</h3>
-<div class="space-y-3">
-<div>
-<label for="priceDomQua" class="block text-sm font-medium text-gray-300 mb-1">Dom a Qua (Kz)</label>
-<input type="number" id="priceDomQua" value="50000" class="w-full px-3 py-2 rounded-lg bg-[#2A2A2A] text-white">
-</div>
-<div>
-<label for="priceQuinta" class="block text-sm font-medium text-gray-300 mb-1">Quinta (Kz)</label>
-<input type="number" id="priceQuinta" value="100000" class="w-full px-3 py-2 rounded-lg bg-[#2A2A2A] text-white">
-</div>
-<div>
-<label for="priceSexSab" class="block text-sm font-medium text-gray-300 mb-1">Sex, Sáb, Feriado (Kz)</label>
-<input type="number" id="priceSexSab" value="200000" class="w-full px-3 py-2 rounded-lg bg-[#2A2A2A] text-white">
-</div>
-</div>
-<button id="updatePrices" class="mt-3 py-2 px-4 bg-[#D4AF37] text-black font-medium rounded-button hover:bg-[#B8982E] transition-all !rounded-button">Atualizar Preços</button>
-</div>
-<button id="logoutAdmin" class="mt-6 py-2 px-4 bg-gray-600 text-white font-medium rounded-button hover:bg-gray-700 transition-all w-full !rounded-button">Sair</button>
-</div>
+</section>
 </div>
 <!-- Footer -->
-<footer class="bg-[#1A1A1A] py-8">
-<div class="max-w-[375px] mx-auto px-4">
-<div class="flex flex-col items-center mb-6">
-<h3 class="text-xl font-['Pacifico'] text-[#D4AF37] mb-4">Marisqueira Belinha</h3>
-<div class="flex space-x-4 mb-4">
-<a href="#sobre" class="text-gray-300 hover:text-white">Sobre</a>
-<a href="#servicos" class="text-gray-300 hover:text-white">Serviços</a>
-<a href="#precario" class="text-gray-300 hover:text-white">Preçário</a>
-<a href="#contato" class="text-gray-300 hover:text-white">Contato</a>
-</div>
-<div class="flex space-x-4">
-<a href="https://instagram.com/marisqueirabelinha" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#2A2A2A] rounded-full hover:bg-[#D4AF37] transition-all">
-<i class="ri-instagram-line text-white"></i>
-</a>
-<a href="https://facebook.com/MarisqueiraBelinha" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#2A2A2A] rounded-full hover:bg-[#D4AF37] transition-all">
-<i class="ri-facebook-fill text-white"></i>
-</a>
-<a href="https://www.tiktok.com/@marisqueirabelinha" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#2A2A2A] rounded-full hover:bg-[#D4AF37] transition-all">
-<i class="ri-tiktok-line text-white"></i>
-</a>
-<a href="https://wa.me/244935079096" target="_blank" class="w-10 h-10 flex items-center justify-center bg-[#2A2A2A] rounded-full hover:bg-[#D4AF37] transition-all">
-<i class="ri-whatsapp-line text-white"></i>
-</a>
-</div>
-</div>
-<div class="text-center">
-<p class="text-gray-400 text-sm">© 2025 Marisqueira Belinha. Todos os direitos reservados.</p>
-<button id="adminLoginButton" class="text-gray-500 text-xs mt-2 hover:text-gray-400">Área Administrativa</button>
-</div>
-</div>
+<footer class="w-full bg-gray-900 border-t border-gray-800 py-4 px-4 text-center text-sm text-gray-400">
+<p>© 2025 Marisqueira Belinha. Todos os direitos reservados.</p>
 </footer>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-// Mobile Menu Toggle
+// Menu Toggle
 const menuToggle = document.getElementById('menuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 menuToggle.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
 if (mobileMenu.classList.contains('hidden')) {
-mobileMenu.classList.remove('hidden');
+menuToggle.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
 } else {
-mobileMenu.classList.add('hidden');
+menuToggle.innerHTML = '<i class="ri-close-line ri-lg"></i>';
 }
 });
-// Close mobile menu when clicking on a link
-const mobileLinks = mobileMenu.querySelectorAll('a');
-mobileLinks.forEach(link => {
-link.addEventListener('click', function() {
-mobileMenu.classList.add('hidden');
+// Fade In Animation
+const fadeElements = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.style.opacity = 1;
+entry.target.style.transform = 'translateY(0)';
+}
 });
+}, { threshold: 0.1 });
+fadeElements.forEach(el => {
+observer.observe(el);
 });
-});
-document.addEventListener('DOMContentLoaded', function() {
-// Contact Form Submission
+// Contact Form
 const contactForm = document.getElementById('contactForm');
 contactForm.addEventListener('submit', function(e) {
 e.preventDefault();
-const name = document.getElementById('name').value;
+const nome = document.getElementById('nome').value;
 const email = document.getElementById('email').value;
-const eventType = document.getElementById('eventType').value;
-const date = document.getElementById('date').value;
-const message = document.getElementById('message').value;
-// Redirect to WhatsApp with form data
-const whatsappMessage = `*Nova Reserva*%0A%0A*Nome:* ${name}%0A*Email:* ${email}%0A*Tipo de Evento:* ${eventType}%0A*Data:* ${date}%0A*Mensagem:* ${message}`;
-window.location.href = `https://wa.me/244935079096?text=${whatsappMessage}`;
+const telefone = document.getElementById('telefone').value;
+const mensagem = document.getElementById('mensagem').value;
+const whatsappMessage = `Olá, sou ${nome}. Email: ${email}, Telefone: ${telefone}. ${mensagem}`;
+const whatsappUrl = `https://wa.me/244923698434?text=${encodeURIComponent(whatsappMessage)}`;
+window.open(whatsappUrl, '_blank');
+contactForm.reset();
 });
-});
-document.addEventListener('DOMContentLoaded', function() {
-// Admin Login
-const adminLoginButton = document.getElementById('adminLoginButton');
-const adminLoginModal = document.getElementById('adminLoginModal');
-const closeAdminModal = document.getElementById('closeAdminModal');
-const adminLoginForm = document.getElementById('adminLoginForm');
-const loginError = document.getElementById('loginError');
-const adminPanel = document.getElementById('adminPanel');
-const closeAdminPanel = document.getElementById('closeAdminPanel');
-const logoutAdmin = document.getElementById('logoutAdmin');
-adminLoginButton.addEventListener('click', function() {
-adminLoginModal.classList.remove('hidden');
-});
-closeAdminModal.addEventListener('click', function() {
-adminLoginModal.classList.add('hidden');
-loginError.classList.add('hidden');
-document.getElementById('adminPassword').value = '';
-});
-adminLoginForm.addEventListener('submit', function(e) {
+// Menu links smooth scroll
+const menuLinks = document.querySelectorAll('a[href^="#"]');
+menuLinks.forEach(link => {
+link.addEventListener('click', function(e) {
 e.preventDefault();
-const password = document.getElementById('adminPassword').value;
-if (password === 'Angola242025') {
-adminLoginModal.classList.add('hidden');
-adminPanel.classList.remove('hidden');
-document.getElementById('adminPassword').value = '';
-loginError.classList.add('hidden');
-} else {
-loginError.classList.remove('hidden');
+const targetId = this.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 70,
+behavior: 'smooth'
+});
+// Close mobile menu if open
+if (!mobileMenu.classList.contains('hidden')) {
+mobileMenu.classList.add('hidden');
+menuToggle.innerHTML = '<i class="ri-menu-line ri-lg"></i>';
+}
 }
 });
-closeAdminPanel.addEventListener('click', function() {
-adminPanel.classList.add('hidden');
-});
-logoutAdmin.addEventListener('click', function() {
-adminPanel.classList.add('hidden');
 });
 });
-document.addEventListener('DOMContentLoaded', function() {
-// Admin Panel Functionality
-const updateHeroImage = document.getElementById('updateHeroImage');
-const updateSiteName = document.getElementById('updateSiteName');
-const updatePrices = document.getElementById('updatePrices');
-const updateSocialLinks = document.getElementById('updateSocialLinks');
-// Update Hero Image
-updateHeroImage.addEventListener('click', function() {
-const fileInput = document.getElementById('newHeroImage');
-if (fileInput.files && fileInput.files[0]) {
-const reader = new FileReader();
-reader.onload = function(e) {
-// Update the preview
-document.getElementById('currentHeroImage').src = e.target.result;
-// Update the actual hero section background
-document.querySelector('.hero-section').style.backgroundImage = `url('${e.target.result}')`;
-// Show success message
-showAdminMessage('Imagem atualizada com sucesso!');
-};
-reader.readAsDataURL(fileInput.files[0]);
-} else {
-showAdminMessage('Por favor, selecione uma imagem.', true);
+// Function to send WhatsApp message
+function enviarMensagem(servico) {
+const message = `Olá, tenho interesse no seguinte serviço: ${servico}. Gostaria de mais informações.`;
+const whatsappUrl = `https://wa.me/244923698434?text=${encodeURIComponent(message)}`;
+window.open(whatsappUrl, '_blank');
 }
-});
-// Update Site Name
-updateSiteName.addEventListener('click', function() {
-const newName = document.getElementById('siteName').value.trim();
-if (newName) {
-// Update all instances of the site name
-document.querySelector('nav a.font-[\'Pacifico\']').textContent = newName;
-document.querySelector('footer h3.font-[\'Pacifico\']').textContent = newName;
-document.title = `${newName} - Espaço de Eventos em Luanda`;
-showAdminMessage('Nome atualizado com sucesso!');
-} else {
-showAdminMessage('Por favor, insira um nome válido.', true);
-}
-});
-// Update Prices
-updatePrices.addEventListener('click', function() {
-const priceDomQua = document.getElementById('priceDomQua').value;
-const priceQuinta = document.getElementById('priceQuinta').value;
-const priceSexSab = document.getElementById('priceSexSab').value;
-// Update price display in the pricing section
-const priceElements = document.querySelectorAll('.price-card .text-[#D4AF37].text-2xl');
-priceElements[0].textContent = `${Number(priceDomQua).toLocaleString()} Kz`;
-priceElements[1].textContent = `${Number(priceQuinta).toLocaleString()} Kz`;
-priceElements[2].textContent = `${Number(priceSexSab).toLocaleString()} Kz`;
-showAdminMessage('Preços atualizados com sucesso!');
-});
-// Update Social Links
-updateSocialLinks.addEventListener('click', function() {
-const instagramLink = document.getElementById('instagramLink').value.trim();
-const facebookLink = document.getElementById('facebookLink').value.trim();
-const tiktokLink = document.getElementById('tiktokLink').value.trim();
-const whatsappNumber = document.getElementById('whatsappNumber').value.trim();
-// Update social media links in footer
-const socialLinks = document.querySelectorAll('footer .flex.space-x-4 a');
-socialLinks[0].href = instagramLink;
-socialLinks[1].href = facebookLink;
-socialLinks[2].href = tiktokLink;
-socialLinks[3].href = `https://wa.me/${whatsappNumber}`;
-// Update WhatsApp links throughout the page
-const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
-whatsappLinks.forEach(link => {
-if (!link.closest('footer')) {
-link.href = `https://wa.me/${whatsappNumber}`;
-}
-});
-showAdminMessage('Links das redes sociais atualizados com sucesso!');
-});
-// Helper function to show admin messages
-function showAdminMessage(message, isError = false) {
-// Create message element
-const messageElement = document.createElement('div');
-messageElement.className = `fixed bottom-4 left-1/2 transform -translate-x-1/2 py-2 px-4 rounded-lg text-white ${isError ? 'bg-red-500' : 'bg-green-500'} z-50`;
-messageElement.textContent = message;
-// Add to body
-document.body.appendChild(messageElement);
-// Remove after 3 seconds
-setTimeout(() => {
-messageElement.remove();
-}, 3000);
-}
-});
 </script>
 </body>
 </html>
